@@ -1,11 +1,20 @@
 
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Typography } from '@mui/material'
+import LoginPage from './pages/auth/login'
+import RegistrationPage from './pages/auth/registeration'
+import HomePage from './pages/home'
+import PageNotFound from './pages/404'
 
 function App() {
 
   return (
-    <Typography variant='h1'>hello this is admin</Typography>
+    <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/register' element={<RegistrationPage />} />
+      <Route path='/login' element={<LoginPage />} />
+      <Route path='*' element={<PageNotFound />} />
+    </Routes>
   )
 }
 
