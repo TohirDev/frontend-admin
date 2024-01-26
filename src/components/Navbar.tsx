@@ -1,10 +1,11 @@
+import Container from "./Container"
 
 
 const Navbar = () => {
     return(
-        <div>
+        <Container style={{backgroundColor: 'red'}}>
             <h1>navbar</h1>
-        </div>
+        </Container>
     )
 }
 
