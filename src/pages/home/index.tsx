@@ -1,16 +1,17 @@
-import { Button, Typography } from "@mui/material"
+import { Button } from "@mui/material"
 import { useNavigate } from "react-router-dom"
+import HomePage from "./HomePage"
 
 
-const HomePage = () => {
+const Home = () => {
     const navigate = useNavigate()
     return (
         <>
-            <Typography variant="h1">Home Page</Typography>
+            <HomePage />
             <Button variant="contained" color="primary" onClick={() => navigate('/login')}>Go to Login</Button>
         </>
     )
 }
 
 
-export default HomePage
+export default Home
