@@ -1,15 +1,14 @@
-import Navbar from "../../components/Navbar"
-
+import Navbar from "../../components/Navbar";
 
 const HomePage = () => {
-    return (
-        <div>
-            <Navbar />
-            <h1>
-                hieee
-            </h1>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Navbar />
+      <h1>
+        hieee
+      </h1>
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
