@@ -4,10 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite & npm run fmt & npm run dlint & npm run check",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fmt": "deno fmt --watch",
+    "dlint": "deno lint --watch",
+    "check": "deno check **/*.*"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",

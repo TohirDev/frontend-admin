@@ -1,12 +1,11 @@
-import Container from "./Container"
-
+import Container from "./Container";
 
 const Navbar = () => {
-    return(
-        <Container style={{backgroundColor: 'red'}}>
-            <h1>navbar</h1>
-        </Container>
-    )
-}
+  return (
+    <Container style={{ backgroundColor: "red" }}>
+      <h1>navbar</h1>
+    </Container>
+  );
+};
 
-export default Navbar
+export default Navbar;
