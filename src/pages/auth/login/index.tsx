@@ -4,14 +4,20 @@ import {
   Card,
   CardContent,
   Container,
-  TextField,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
   Typography,
 } from "@mui/material";
 import LOGIN from "../../../assets/logo-svg.svg";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useState } from "react";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 type Inputs = {
-  phoneNumber: string;
+  phoneNumber: number;
   password: string;
 };
 
@@ -36,17 +42,22 @@ const LoginPage = () => {
           <CardContent
             sx={{ display: "flex", flexDirection: "column", gap: "20px" }}
           >
-            <Typography variant="h3">Tizimga kirish</Typography>
+            <Typography variant="body1">Tizimga kirish</Typography>
             <Box
               component={"img"}
               src={LOGIN}
               sx={{
-                width: "300px",
-                height: "300px",
+                width: "150px",
+                height: "150px",
                 objectFit: "contain",
+                ml: 6,
               }}
             />
-            <Fileds register={register} />
+            <Typography variant="body1">Telefon raqam</Typography>
+            <InputFields register={register} />
+            <Button variant="contained" type="submit">
+              Tizimga kirish
+            </Button>
           </CardContent>
         </Box>
       </Card>
@@ -57,30 +68,51 @@ const LoginPage = () => {
 export default LoginPage;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Fileds = ({ register }: any) => {
+export const InputFields = ({ register }: any) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event: {
+    preventDefault: () => void;
+  }) => {
+    event.preventDefault();
+  };
   return (
     <>
-      <Typography variant="h5">Telefon raqam</Typography>
-      <TextField
-        {...register("phoneNumber", { required: true })}
-        type="tel"
+      <OutlinedInput
+        {...register("phoneNumber", {
+          required: true,
+        })}
+        type="number"
         placeholder="+998--___-__-__"
-        autoComplete="current-password"
       />
-      <TextField
-        {...register("password", { required: true })}
-        placeholder="Password"
-        type="password"
-        aria-invalid="false"
-        id=":r5:"
-        name="password"
-        className="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-        value
-        autoComplete="current-password"
-      />
-      <Button variant="contained" type="submit">
-        Tizimga kirish
-      </Button>
+      <FormControl fullWidth variant="outlined">
+        <InputLabel htmlFor="outlined-adornment-password">
+          Password
+        </InputLabel>
+        <OutlinedInput
+          {...register("password", {
+            required: true,
+          })}
+          fullWidth
+          id="outlined-adornment-password"
+          type={showPassword ? "text" : "password"}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label="Password"
+        />
+      </FormControl>
     </>
   );
 };
