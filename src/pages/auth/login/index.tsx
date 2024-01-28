@@ -17,13 +17,30 @@ import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 type Inputs = {
-  phoneNumber: number;
+  phone_number: number;
   password: string;
 };
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const response = await fetch(
+        "https://laptop-uz.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const result = await response.json();
+      console.log(result);
+    } catch (err: unknown) {
+      throw new Error((err as Error).message);
+    }
+  };
 
   return (
     <Container
@@ -81,7 +98,7 @@ export const InputFields = ({ register }: any) => {
   return (
     <>
       <OutlinedInput
-        {...register("phoneNumber", {
+        {...register("phone_number", {
           required: true,
         })}
         type="number"
