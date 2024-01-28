@@ -13,20 +13,37 @@ import {
 } from "@mui/material";
 import LOGIN from "../../../assets/logo-svg.svg";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { getUserToken, removeToken, setToken } from "../../../global";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   phone_number: number;
   password: string;
 };
 
+type TLoginData = {
+  message: string;
+  data: {
+    _id: string;
+    phone_number: string;
+    password: string;
+    isAdmin: boolean;
+    __v: 0;
+  };
+  token: string;
+  success: boolean;
+};
+
 const LoginPage = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm<Inputs>();
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       const response = await fetch(
-        "https://laptop-uz.onrender.com/api/auth/login",
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
         {
           method: "POST",
           headers: {
@@ -35,12 +52,22 @@ const LoginPage = () => {
           body: JSON.stringify(data),
         }
       );
-      const result = await response.json();
-      console.log(result);
+      const result: TLoginData = await response.json();
+      if (result.token) {
+        setToken(result.token);
+        navigate("/admin");
+      }
     } catch (err: unknown) {
+      removeToken();
+      console.error((err as Error).message);
       throw new Error((err as Error).message);
     }
   };
+
+  useEffect(() => {
+    const userToken = getUserToken();
+    if (userToken) navigate("/admin");
+  }, [navigate]);
 
   return (
     <Container
