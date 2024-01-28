@@ -5,6 +5,7 @@ import RegistrationPage from "./pages/auth/registeration";
 import Home from "./pages/home";
 import PageNotFound from "./pages/404";
 import MainLayout from "./pages/layout";
+import AdminPage from "./pages/admin";
 
 function App() {
   return (
@@ -12,8 +13,12 @@ function App() {
       <Route path={ERoutes.Root} element={<MainLayout />}>
         <Route path={ERoutes.RootHomePage} element={<Home />} index />
         <Route path={ERoutes.LoginPage} element={<LoginPage />} />
-        <Route path={ERoutes.RegistrationPage} element={<RegistrationPage />} />
+        <Route
+          path={ERoutes.RegistrationPage}
+          element={<RegistrationPage />}
+        />
         <Route path={ERoutes.NotFoundPage} element={<PageNotFound />} />
+        <Route path={ERoutes.AdminPage} element={<AdminPage />} />
       </Route>
     </Routes>
   );
