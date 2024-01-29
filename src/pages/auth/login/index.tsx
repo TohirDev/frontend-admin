@@ -40,6 +40,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<Inputs>();
   const [loading, setLoading] = useState(false);
+  const [loginData, setLoginData] = useState<TLoginData>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
@@ -55,6 +56,7 @@ const LoginPage = () => {
         }
       );
       const result: TLoginData = await response.json();
+      setLoginData(result);
       if (result.token) {
         setToken(result.token);
         navigate("/admin");
@@ -107,6 +109,11 @@ const LoginPage = () => {
             <Button disabled={loading} variant="contained" type="submit">
               {loading ? "Loading..." : "Tizimga kirish"}
             </Button>
+            {loginData?.message ? (
+              <Typography variant="caption" color="red">
+                {loginData.message}
+              </Typography>
+            ) : null}
           </CardContent>
         </Box>
       </Card>
