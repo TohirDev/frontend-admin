@@ -17,30 +17,13 @@ import { useEffect, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { getUserToken, removeToken, setToken } from "../../../global";
 import { useNavigate } from "react-router-dom";
-
-type Inputs = {
-  phone_number: number;
-  password: string;
-};
-
-type TLoginData = {
-  message: string;
-  data: {
-    _id: string;
-    phone_number: string;
-    password: string;
-    isAdmin: boolean;
-    __v: 0;
-  };
-  token: string;
-  success: boolean;
-};
+import { Inputs, TRegLoginData } from "../../../types";
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<Inputs>();
   const [loading, setLoading] = useState(false);
-  const [loginData, setLoginData] = useState<TLoginData>();
+  const [loginData, setLoginData] = useState<TRegLoginData>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
@@ -55,7 +38,7 @@ const RegistrationPage = () => {
           body: JSON.stringify(data),
         }
       );
-      const result: TLoginData = await response.json();
+      const result: TRegLoginData = await response.json();
       setLoginData(result);
       if (result.token) {
         setToken(result.token);
