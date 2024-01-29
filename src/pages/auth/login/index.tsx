@@ -39,9 +39,11 @@ type TLoginData = {
 const LoginPage = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<Inputs>();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
+      setLoading(true);
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/auth/login`,
         {
@@ -60,7 +62,10 @@ const LoginPage = () => {
     } catch (err: unknown) {
       removeToken();
       console.error((err as Error).message);
+      setLoading(false);
       throw new Error((err as Error).message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -99,8 +104,8 @@ const LoginPage = () => {
             />
             <Typography variant="body1">Telefon raqam</Typography>
             <InputFields register={register} />
-            <Button variant="contained" type="submit">
-              Tizimga kirish
+            <Button disabled={loading} variant="contained" type="submit">
+              {loading ? "Loading..." : "Tizimga kirish"}
             </Button>
           </CardContent>
         </Box>
