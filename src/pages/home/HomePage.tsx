@@ -1,14 +1,14 @@
+import { useNavigate } from "react-router-dom";
+import { Box, Button } from "@mui/material";
 import Navbar from "../../components/Navbar";
 import { getUserToken } from "../../global";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const data = getUserToken();
   const navigate = useNavigate();
 
   return (
-    <div>
+    <Box sx={{ width: "100%" }}>
       <Navbar />
       <h1>hieee</h1>
 
@@ -19,7 +19,7 @@ const HomePage = () => {
       >
         {data ? "Profil" : "E'lon berish"}
       </Button>
-    </div>
+    </Box>
   );
 };
 
