@@ -10,7 +10,12 @@ const Container = ({ children, style }: TContainer) => {
   return (
     <Box
       component={"div"}
-      sx={{ margin: "0 auto", width: "1350px", maxWidth: "1350px", ...style }}
+      sx={{
+        margin: "0 auto",
+        width: "90%",
+        maxWidth: "90%",
+        ...style,
+      }}
     >
       {children}
     </Box>
