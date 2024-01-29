@@ -24,6 +24,15 @@ const AdminPage = () => {
       >
         Log Out
       </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Home page
+      </Button>
     </div>
   );
 };
