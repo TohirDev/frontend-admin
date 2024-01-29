@@ -109,6 +109,14 @@ const LoginPage = () => {
             <Button disabled={loading} variant="contained" type="submit">
               {loading ? "Loading..." : "Tizimga kirish"}
             </Button>
+            <Typography
+              variant="caption"
+              color="blue"
+              sx={{ cursor: "pointer" }}
+              onClick={() => navigate("/register")}
+            >
+              Do not have account?
+            </Typography>
             {loginData?.message ? (
               <Typography variant="caption" color="red">
                 {loginData.message}
