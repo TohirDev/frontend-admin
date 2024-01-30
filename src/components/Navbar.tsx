@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <nav style={{ backgroundColor: "red" }}>
+    <nav>
       <h1>navbar</h1>
     </nav>
   );
