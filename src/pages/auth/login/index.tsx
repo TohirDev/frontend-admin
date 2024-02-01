@@ -24,6 +24,7 @@ const LoginPage = () => {
   const { register, handleSubmit } = useForm<Inputs>();
   const [loading, setLoading] = useState(false);
   const [loginData, setLoginData] = useState<TRegLoginData>();
+  console.log(import.meta.env.VITE_API_URL);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {

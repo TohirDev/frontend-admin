@@ -98,7 +98,7 @@ const RegistrationPage = () => {
               sx={{ cursor: "pointer" }}
               onClick={() => navigate("/login")}
             >
-              Log in?
+              Log in
             </Typography>
             {loginData?.message ? (
               <Typography variant="caption" color="red">
