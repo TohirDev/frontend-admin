@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { getUserToken } from "../../global";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, Container, Grid } from "@mui/material";
+import Elonlar from "./components/elonlar";
+import Settings from "./components/settings";
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -41,6 +43,7 @@ const AdminPage = () => {
               variant="contained"
               color="primary"
               sx={{ fontSize: "20px" }}
+              onClick={() => navigate("/admin/elonlar")}
             >
               E'lonlar
             </Button>
@@ -49,13 +52,14 @@ const AdminPage = () => {
               variant="contained"
               color="primary"
               sx={{ mt: 2, fontSize: "20px" }}
+              onClick={() => navigate("/admin/settings")}
             >
               Sozlamalar
             </Button>
           </Box>
         </Grid>
         <Grid item md={9} sm={10} sx={{ background: "blue" }}>
-          {}
+          {id == "settings" ? <Settings /> : <Elonlar />}
         </Grid>
       </Grid>
     </Container>
