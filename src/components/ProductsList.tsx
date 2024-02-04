@@ -10,6 +10,7 @@ const ProductsList = () => {
     `https://laptop-uz.onrender.com/api/product?page=${page}`
   );
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    console.log(event);
     setPage(value);
   };
 
