@@ -5,4 +5,5 @@ export enum ERoutes {
   RegistrationPage = "/register",
   NotFoundPage = "*",
   AdminPage = "/admin",
+  Elonlar = "/admin/:id",
 }
