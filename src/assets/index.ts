@@ -1,2 +1,3 @@
 import headerlogo from "./header-logo.svg";
-export { headerlogo };
+import banner from "./banner.png";
+export { headerlogo, banner };
