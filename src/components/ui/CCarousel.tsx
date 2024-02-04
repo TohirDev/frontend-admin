@@ -8,7 +8,7 @@ const CCarousel = () => {
   const images = [banner, banner, banner];
   return (
     <Container maxWidth={"xl"}>
-      <Carousel autoPlay>
+      <Carousel showThumbs={false} autoPlay>
         {images.map((img, i) => (
           <Box key={i}>
             <Box component={"img"} src={img} />

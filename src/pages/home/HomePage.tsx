@@ -1,6 +1,7 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import MAC from "../../assets/mac1.png";
 import CCarousel from "../../components/ui/CCarousel";
+import ProductsList from "../../components/ProductsList";
 
 const HomePage = () => {
   return (
@@ -79,6 +80,7 @@ const HomePage = () => {
           </Grid>
         </Container>
       </Box>
+      <ProductsList />
     </>
   );
 };
