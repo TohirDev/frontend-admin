@@ -4,31 +4,33 @@ interface IProductCardProps {
   product: IProduct;
 }
 const ProductCard = ({ product }: IProductCardProps) => {
+  console.log(product);
   return (
     <>
       <Card
         sx={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "space-between",
           alignItems: "center",
         }}
       >
-        <CardMedia>
+        <CardMedia sx={{ flex: 1, textAlign: "center" }}>
           <Box
             component={"img"}
             src={product?.Image[2].url}
-            width={"300px"}
+            width={"150px"}
+            sx={{ borderRadius: "4px" }}
           ></Box>
         </CardMedia>
-        <CardContent sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography variant="h4">{product.model_name}</Typography>
-          <Typography variant="h5" fontWeight={"bold"}>
+        <CardContent sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
+          <Typography variant="h5">{product.model_name}</Typography>
+          <Typography variant="body1" fontWeight={"bold"}>
             {product.__v}
           </Typography>
           <Box>
-            <Typography variant="h6">{product.location}</Typography>
-            <Typography variant="h6">{product.status}</Typography>
-            <Typography variant="h6">{product.phone_number}</Typography>
+            <Typography variant="body1">{product.location}</Typography>
+            <Typography variant="body1">{product.status}</Typography>
+            <Typography variant="body1">{product.phone_number}</Typography>
           </Box>
         </CardContent>
       </Card>

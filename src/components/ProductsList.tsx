@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Box, Container, Pagination, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Pagination,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { IData } from "../interfaces";
 import useFetch from "../hooks/useFetch";
 import ProductCard from "./ProductCard";
@@ -10,27 +17,34 @@ const ProductsList = () => {
     `https://laptop-uz.onrender.com/api/product?page=${page}`
   );
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    console.log(event);
+    console.log(event); //event
     setPage(value);
   };
 
   return (
-    <Box component={"section"}>
-      <Container
-        maxWidth="lg"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-      >
+    <Box component={"section"} bgcolor={"#e0e0e0"}>
+      <Container maxWidth="xl">
+        <Typography variant="h3" py={2}>
+          Laptops
+        </Typography>
+
         {loading && <Typography variant="h1">...Loading</Typography>}
         {error && <Typography variant="h1">{error.message}</Typography>}
+        {/* 
         {data?.products?.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))}
-
+          
+        ))} */}
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          {data?.products?.map((laptop, i) => (
+            <Grid item xs={2} sm={4} md={4} key={i}>
+              <ProductCard key={laptop._id} product={laptop} />
+            </Grid>
+          ))}
+        </Grid>
         <Stack spacing={2}>
           <Typography>Page: {page}</Typography>
           <Pagination count={data?.pages} page={page} onChange={handleChange} />

@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+
 import HomePage from "./HomePage";
 
 const Home = () => {

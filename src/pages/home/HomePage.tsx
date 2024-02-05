@@ -1,13 +1,12 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import MAC from "../../assets/mac1.png";
-import CCarousel from "../../components/ui/CCarousel";
 import ProductsList from "../../components/ProductsList";
+import CCarousel from "../../components/ui/CCarousel";
 
 const HomePage = () => {
   return (
     <>
-      <Box sx={{ width: "100%", background: "#72A0C1", py: 2 }}>
-        <CCarousel />
+      <Box sx={{ width: "100%", background: "#72A0C1", py: 5 }}>
         <Container maxWidth="xl">
           <Grid container spacing={3}>
             <Grid item sm={12} md={6}>
@@ -81,6 +80,9 @@ const HomePage = () => {
         </Container>
       </Box>
       <ProductsList />
+      <Box bgcolor={"#72A0C1"} py={"40px"}>
+        <CCarousel />
+      </Box>
     </>
   );
 };
