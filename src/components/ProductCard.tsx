@@ -12,26 +12,28 @@ const ProductCard = ({ product }: IProductCardProps) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          flexDirection: "column",
         }}
       >
-        <CardMedia sx={{ flex: 1, textAlign: "center" }}>
+        <CardMedia>
           <Box
             component={"img"}
             src={product?.Image[2].url}
-            width={"150px"}
-            sx={{ borderRadius: "4px" }}
+            width={"100%"}
           ></Box>
         </CardMedia>
-        <CardContent sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
+        <CardContent sx={{ display: "flex", flexDirection: "column" }}>
           <Typography variant="h5">{product.model_name}</Typography>
           <Typography variant="body1" fontWeight={"bold"}>
-            {product.__v}
+            {product.__v} $
           </Typography>
-          <Box>
-            <Typography variant="body1">{product.location}</Typography>
-            <Typography variant="body1">{product.status}</Typography>
-            <Typography variant="body1">{product.phone_number}</Typography>
-          </Box>
+
+          <Typography variant="body1">Status {product.status}</Typography>
+          <Typography variant="body1">Location {product.location}</Typography>
+
+          <Typography variant="body1">
+            Telephone {product.phone_number}
+          </Typography>
         </CardContent>
       </Card>
     </>

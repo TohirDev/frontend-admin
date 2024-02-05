@@ -22,7 +22,7 @@ const ProductsList = () => {
   };
 
   return (
-    <Box component={"section"} bgcolor={"#e0e0e0"}>
+    <Box component={"section"} bgcolor={"#e0e0e0"} py={3}>
       <Container maxWidth="xl">
         <Typography variant="h3" py={2}>
           Laptops
@@ -40,7 +40,7 @@ const ProductsList = () => {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {data?.products?.map((laptop, i) => (
-            <Grid item xs={2} sm={4} md={4} key={i}>
+            <Grid item xs={2} sm={4} md={2} key={i}>
               <ProductCard key={laptop._id} product={laptop} />
             </Grid>
           ))}
