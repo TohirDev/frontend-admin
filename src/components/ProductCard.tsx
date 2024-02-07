@@ -22,7 +22,9 @@ const ProductCard = ({ product }: IProductCardProps) => {
             width={"100%"}
           ></Box>
         </CardMedia>
-        <CardContent sx={{ display: "flex", flexDirection: "column" }}>
+        <CardContent
+          sx={{ display: "flex", flexDirection: "column", p: "none" }}
+        >
           <Typography variant="h5">{product.model_name}</Typography>
           <Typography variant="body1" fontWeight={"bold"}>
             {product.__v} $
