@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { getUserToken } from "../../global";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Button, Container, Grid } from "@mui/material";
-import Elonlar from "./components/elonlar";
-import Settings from "./components/settings";
+import { Box, Typography } from "@mui/material";
+import SideNav from "./components/sidebar";
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -16,53 +15,27 @@ const AdminPage = () => {
     }
   }, [navigate]);
   return (
-    <Container>
-      <Grid container sx={{ height: "100vh" }}>
-        <Grid
-          item
-          md={3}
-          sm={2}
-          sx={{
-            borderRight: "1px solid silver",
-            borderLeft: "1px solid silver",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Box
-            sx={{
-              width: "90%",
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-              mt: 5,
-            }}
-          >
-            <Button
-              fullWidth
-              variant="contained"
-              color="primary"
-              sx={{ fontSize: "20px" }}
-              onClick={() => navigate("/admin/elonlar")}
-            >
-              E'lonlar
-            </Button>
-            <Button
-              fullWidth
-              variant="contained"
-              color="primary"
-              sx={{ mt: 2, fontSize: "20px" }}
-              onClick={() => navigate("/admin/settings")}
-            >
-              Sozlamalar
-            </Button>
-          </Box>
-        </Grid>
-        <Grid item md={9} sm={10} sx={{ background: "blue" }}>
-          {id == "settings" ? <Settings /> : <Elonlar />}
-        </Grid>
-      </Grid>
-    </Container>
+    <Box sx={{ display: "flex" }}>
+      <SideNav />
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Typography variant="h1">AdminPage</Typography>
+        <Typography paragraph>
+          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
+          elementum integer enim neque volutpat ac tincidunt. Ornare
+          suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
+          volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
+          Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
+          ornare massa eget egestas purus viverra accumsan in. In hendrerit
+          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
+          aliquam sem et tortor. Habitant morbi tristique senectus et.
+          Adipiscing elit duis tristique sollicitudin nibh sit. Ornare
+          aenean euismod elementum nisi quis eleifend. Commodo viverra
+          maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
+          aliquam ultrices sagittis orci a.
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 

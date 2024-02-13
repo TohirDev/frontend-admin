@@ -5,9 +5,9 @@ import RegistrationPage from "./pages/auth/registeration";
 import Home from "./pages/home";
 import PageNotFound from "./pages/404";
 import MainLayout from "./pages/layout";
-import AdminPage from "./pages/admin";
 import Elonlar from "./pages/admin/components/elonlar";
 import Settings from "./pages/admin/components/settings";
+import AdminPage from "./pages/admin";
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
         />
         <Route path={ERoutes.NotFoundPage} element={<PageNotFound />} />
         <Route path={ERoutes.AdminPage} element={<AdminPage />} />
-        <Route path={ERoutes.Elonlar} element={<Elonlar />} />
-        <Route path={ERoutes.Elonlar} element={<Settings />} />
+        <Route path={ERoutes.AdminAnnouncement} element={<Elonlar />} />
+        <Route path={ERoutes.AdminSettings} element={<Settings />} />
       </Route>
     </Routes>
   );
