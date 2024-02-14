@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -15,6 +15,15 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import { Link } from "react-router-dom";
+import { ERoutes } from "../../../../enum/routes";
+import { SettingsAccessibility } from "@mui/icons-material";
+
+type TListItemLink = {
+  open: boolean;
+  path: string;
+  text: string;
+  icon: ReactNode;
+};
 
 const drawerWidth = 240;
 
@@ -44,7 +53,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -89,95 +97,61 @@ export default function SideNav() {
         </DrawerHeader>
         <Divider />
         <List>
-          <Link to={"/admin"}>
-            <ListItem
-              key={"Dashboard"}
-              disablePadding
-              sx={{ display: "block" }}
-            >
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  <MailIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={"Dashboard"}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-          <Link to={"/admin/settings"}>
-            <ListItem
-              key={"Settings"}
-              disablePadding
-              sx={{ display: "block" }}
-            >
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  <MailIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={"Settings"}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-          <Link to={"/admin/elonlar"}>
-            <ListItem
-              key={"Elonlar"}
-              disablePadding
-              sx={{ display: "block" }}
-            >
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  <MailIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={"Elonlar"}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          <ListItemLink
+            open={open}
+            text="Admin"
+            path={ERoutes.AdminPage}
+            key={1}
+            icon={<MailIcon />}
+          />
+          <ListItemLink
+            open={open}
+            text="Elonlar"
+            path={ERoutes.AdminAnnouncement}
+            key={1}
+            icon={<SettingsAccessibility />}
+          />
+          <ListItemLink
+            open={open}
+            text="Settings"
+            path={ERoutes.AdminSettings}
+            key={1}
+            icon={<MailIcon />}
+          />
         </List>
       </Drawer>
     </Box>
   );
 }
+
+export const ListItemLink = ({
+  open,
+  path,
+  text,
+  icon,
+}: TListItemLink) => {
+  return (
+    <Link to={path} style={{ textDecoration: "none" }}>
+      <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        <ListItemButton
+          sx={{
+            minHeight: 48,
+            justifyContent: open ? "initial" : "center",
+            px: 2.5,
+          }}
+        >
+          <ListItemIcon
+            sx={{
+              minWidth: 0,
+              mr: open ? 3 : "auto",
+              justifyContent: "center",
+            }}
+          >
+            {icon}
+          </ListItemIcon>
+          <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemButton>
+      </ListItem>
+    </Link>
+  );
+};
