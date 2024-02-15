@@ -16,7 +16,8 @@ import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import { Link } from "react-router-dom";
 import { ERoutes } from "../../../../enum/routes";
-import { SettingsAccessibility } from "@mui/icons-material";
+import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 type TListItemLink = {
   open: boolean;
@@ -109,14 +110,14 @@ export default function SideNav() {
             text="Elonlar"
             path={ERoutes.AdminAnnouncement}
             key={1}
-            icon={<SettingsAccessibility />}
+            icon={<LaptopChromebookIcon />}
           />
           <ListItemLink
             open={open}
             text="Settings"
             path={ERoutes.AdminSettings}
             key={1}
-            icon={<MailIcon />}
+            icon={<SettingsIcon />}
           />
         </List>
       </Drawer>
