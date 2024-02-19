@@ -1,11 +1,11 @@
 import { ReactNode, useState } from "react";
+import { Link } from "react-router-dom";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
-
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
+import MuiDrawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -13,11 +13,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import { Link } from "react-router-dom";
-import { ERoutes } from "../../../../enum/routes";
-import { SettingsAccessibility } from "@mui/icons-material";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
+import { ERoutes } from "../../../../enum/routes";
+import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
+import SettingsIcon from "@mui/icons-material/Settings";
 type TListItemLink = {
   open: boolean;
   path: string;
@@ -84,7 +84,6 @@ export default function SideNav() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
@@ -99,24 +98,24 @@ export default function SideNav() {
         <List>
           <ListItemLink
             open={open}
-            text="Admin"
+            text="Dashboard"
             path={ERoutes.AdminPage}
             key={1}
-            icon={<MailIcon />}
+            icon={<DashboardIcon />}
           />
           <ListItemLink
             open={open}
             text="Elonlar"
             path={ERoutes.AdminAnnouncement}
             key={1}
-            icon={<SettingsAccessibility />}
+            icon={<LaptopChromebookIcon />}
           />
           <ListItemLink
             open={open}
             text="Settings"
             path={ERoutes.AdminSettings}
             key={1}
-            icon={<MailIcon />}
+            icon={<SettingsIcon />}
           />
         </List>
       </Drawer>
@@ -132,7 +131,11 @@ export const ListItemLink = ({
 }: TListItemLink) => {
   return (
     <Link to={path} style={{ textDecoration: "none" }}>
-      <ListItem key={text} disablePadding sx={{ display: "block" }}>
+      <ListItem
+        key={text}
+        disablePadding
+        sx={{ display: "block", color: "#000" }}
+      >
         <ListItemButton
           sx={{
             minHeight: 48,
