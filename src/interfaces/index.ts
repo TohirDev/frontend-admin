@@ -1,3 +1,8 @@
+export interface NAV_HEADER {
+  name: string;
+  path: string;
+}
+
 export interface IProduct {
   _id: string;
   Image: {

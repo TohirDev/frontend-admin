@@ -1,5 +1,6 @@
 import headerlogo from "./header-logo.svg";
-
+import social1 from "./social1.svg";
+import social2 from "./social2.svg";
 import banner1 from "./banner1.jpg";
 import banner2 from "./banner2.jpg";
 import banner3 from "./banner3.jpg";
@@ -18,6 +19,8 @@ import partnerlogo6 from "./partner-logo6.svg";
 import partnerlogo7 from "./partner-logo7.svg";
 export {
   headerlogo,
+  social1,
+  social2,
   banner1,
   banner2,
   banner3,
