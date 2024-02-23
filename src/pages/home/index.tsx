@@ -1,5 +1,8 @@
 import { Box, Container, Typography } from "@mui/material";
-import Navbar from "../../components/Navbar";
+
+import HomePage from "./HomePage";
+import Navbar from "../../components/Navbar/index";
+
 import {
   suport,
   account,
@@ -12,8 +15,6 @@ import {
   partnerlogo6,
   partnerlogo7,
 } from "../../assets";
-
-import HomePage from "./HomePage";
 
 const Home = () => {
   return (
