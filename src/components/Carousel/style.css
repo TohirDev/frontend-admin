@@ -1,0 +1,59 @@
+.custom-react-multiple-carousel__arrow {
+  position: absolute;
+  outline: 0;
+  transition: all 0.5s;
+  z-index: 1000;
+  border: 0;
+  min-width: 36px;
+  min-height: 48px;
+  cursor: pointer;
+  background: rgb(102, 102, 102);
+  opacity: 0.2;
+}
+
+/* default style .react-multiple-carousel__arrow {
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+} */
+
+.custom-border-right {
+  border-radius: 30px 0px 0px 30px;
+}
+
+.custom-border-left {
+  border-radius: 0px 30px 30px 0px;
+}
+
+.custom-react-multiple-carousel__arrow:hover {
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+.custom-react-multiple-carousel__arrow--right {
+  top: calc(221px + 1px);
+  /* top: calc(50% + 1px); */
+  right: calc(0% + 1px);
+}
+
+.custom-react-multiple-carousel__arrow--right::before {
+  content: "\e825";
+}
+
+.custom-react-multiple-carousel__arrow::before {
+  font-size: 20px;
+  color: #fff;
+  display: block;
+  font-family: revicons;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.custom-react-multiple-carousel__arrow--left {
+  top: calc(221px + 1px);
+  left: calc(0% + 1px);
+}
+
+.custom-react-multiple-carousel__arrow--left::before {
+  content: "\e824";
+}
