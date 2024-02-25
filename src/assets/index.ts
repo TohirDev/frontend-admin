@@ -17,6 +17,13 @@ import partnerlogo4 from "./partner-logo4.svg";
 import partnerlogo5 from "./partner-logo5.svg";
 import partnerlogo6 from "./partner-logo6.svg";
 import partnerlogo7 from "./partner-logo7.svg";
+import image1 from "./product-image.jpeg";
+import image2 from "./product-image-2.jpeg";
+import image3 from "./product-image-3.jpeg";
+import instock from "./instock.svg";
+import checkavailability from "./checkavailability.svg";
+import ziplogo from "./zip-logo.svg";
+import cart from "./cart.svg";
 export {
   headerlogo,
   social1,
@@ -37,4 +44,11 @@ export {
   partnerlogo5,
   partnerlogo6,
   partnerlogo7,
+  image1,
+  image2,
+  image3,
+  instock,
+  checkavailability,
+  ziplogo,
+  cart,
 };
