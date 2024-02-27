@@ -1,29 +1,10 @@
-//hook
-// import useFetch from "../hooks/useFetch";
+import { Box, Container, Link, Stack, Typography } from "@mui/material";
+import { CardsCarousel } from "../../Ui";
+import ProductCard from "../ProductCard";
+import { products } from "../ProductCard/constants";
+import { ziplogo } from "../../../assets";
 
-//Api Data
-// import { IData } from "../interfaces";
-
-//mui
-import { Box, Container, Stack, Link, Typography } from "@mui/material";
-
-//react-multi-carousel package
-import CarouselReact from "./Carousel";
-
-//components
-import ShoppingCard from "./Shop/ShoppingCard";
-
-// data
-import { products } from "./Shop/ShoppingCard/constants";
-
-import { ziplogo } from "../assets";
-
-const ProductsList = () => {
-  // const { data, loading, error } = useFetch<IData>(
-  //   `https://laptop-uz.onrender.com/api/product?page=${page}`
-  // );
-  //console.log(data, loading, error)
-
+const ProductsCarousel = () => {
   return (
     <>
       <Container
@@ -41,7 +22,7 @@ const ProductsList = () => {
             justifyContent: "space-between",
 
             px: { xs: "8px", sm: "20px" },
-            mb: { xs: "-10px", md: "-43px" },
+            mb: { xs: "10px", md: "43px" },
           }}
         >
           <Typography
@@ -69,11 +50,11 @@ const ProductsList = () => {
           </Link>
         </Stack>
 
-        <CarouselReact>
+        <CardsCarousel>
           {products.map((product) => (
-            <ShoppingCard key={product.id} data={product} />
+            <ProductCard key={product.id} data={product} />
           ))}
-        </CarouselReact>
+        </CardsCarousel>
       </Container>
 
       <Box
@@ -118,4 +99,4 @@ const ProductsList = () => {
   );
 };
 
-export default ProductsList;
+export default ProductsCarousel;

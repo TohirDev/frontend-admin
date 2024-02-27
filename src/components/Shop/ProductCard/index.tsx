@@ -25,12 +25,12 @@ import { checkavailability, instock } from "../../../assets";
 import cardstyles from "./styles";
 
 //props
-interface TShoppingCardProps {
+interface IProductCard {
   data: IProduct;
 }
 
 //component
-const ShoppingCard = ({ data }: TShoppingCardProps) => {
+const ProductCard = ({ data }: IProductCard) => {
   const { status, name, oldprice, price, rating, image } = data;
 
   const { wrapper, header, content, border } = cardstyles;
@@ -43,23 +43,23 @@ const ShoppingCard = ({ data }: TShoppingCardProps) => {
         ...wrapper,
         ...border,
 
-        "&:hover": {
-          transition: "0.4s",
-          md: {
-            paddingTop: "15px",
-            transition: "0.5s",
-            marginTop: "15px",
-            marginBottom: 0,
-            marginLeft: 0,
-            marginRight: 0,
+        // "&:hover": {
+        //   transition: "0.4s",
+        //   md: {
+        //     paddingTop: "15px",
+        //     transition: "0.5s",
+        //     marginTop: "15px",
+        //     marginBottom: 0,
+        //     marginLeft: 0,
+        //     marginRight: 0,
 
-            boxShadow: "0px 5px 15px 0px rgba(0, 0, 0, 0.14)",
+        //     boxShadow: "0px 5px 15px 0px rgba(0, 0, 0, 0.14)",
 
-            button: {
-              display: "flex",
-            },
-          },
-        },
+        //     button: {
+        //       display: "flex",
+        //     },
+        //   },
+        // },
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: "6px", mb: 1 }}>
@@ -142,4 +142,4 @@ const ShoppingCard = ({ data }: TShoppingCardProps) => {
   );
 };
 
-export default ShoppingCard;
+export default ProductCard;
