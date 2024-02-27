@@ -53,8 +53,8 @@ function UserMenu() {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {user_settings.map((setting) => (
-          <MenuItem key={setting.path} onClick={handleCloseUserMenu}>
+        {user_settings.map((setting, i) => (
+          <MenuItem key={i} onClick={handleCloseUserMenu}>
             <Typography
               component={"a"}
               href={setting.path}

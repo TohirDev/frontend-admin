@@ -10,19 +10,19 @@ const cardstyles = {
   wrapper: {
     // my: 4,
     // mx: 1,
-    "&:first-child": {
-      ml: "8px",
-    },
-    my: {
-      md: "65px",
-    },
-    mt: {
-      xs: "15px",
-    },
-    mb: {
-      xs: "25px",
-    },
-
+    // "&:first-child": {
+    //   ml: "8px",
+    // },
+    // my: {
+    //   md: "65px",
+    // },
+    // mt: {
+    //   xs: "15px",
+    // },
+    // mb: {
+    //   xs: "25px",
+    // },
+    py: "10px",
     px: { xs: "10px", md: "25px" },
     width: "fit-content",
     display: "flex",
