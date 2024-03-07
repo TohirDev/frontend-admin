@@ -1,11 +1,5 @@
 import { ProductsCarousel, SlideProducts } from "../../components"; //global components
-import {
-  Banners,
-  CustomerSupport,
-  Hero,
-  Partners,
-  SocialNews,
-} from "./components"; //pages components
+import { Banners, CustomerSupport, Partners, SocialNews } from "./components"; //pages components
 import { customBuilds, msiLaptops, desktops, msiMonitors } from "../../data";
 import { imagebg, imagebg2, imagebg3, imagebg4 } from "../../assets";
 
@@ -15,8 +9,6 @@ const HomePage = () => {
   return (
     <>
       <Banners />
-
-      <Hero />
 
       <ProductsCarousel />
 

@@ -27,10 +27,24 @@ const SlideProducts = (props: Props) => {
   return (
     <Container maxWidth={"xl"}>
       {filter && <SlideProductsFilter tabs={filterOptions} />}
-      <SlidesWrapper>
+      <SlidesWrapper
+        sx={{
+          display: "flex",
+          alignItems: { xs: "none", sm: "center" },
+          flexDirection: { xs: "column", sm: "row" },
+          gap: { xs: 2, sm: 3 },
+        }}
+      >
         <LeftBanner
           sx={{
             background: `url(${bannerImage})`,
+            gap: { xs: 2, sm: "10px" },
+            py: { xs: 6, sm: 0 },
+            minWidth: { xs: "100%", sm: "233px" },
+            minHeight: { xs: "100%", sm: "350px" },
+
+            backgroundSize: { xs: "cover", sm: "cover" },
+            backgroundRepeat: "no-repeat",
           }}
         >
           <LeftBannerTitle>{bannerTitle}</LeftBannerTitle>
