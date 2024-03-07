@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { getUserToken } from "../../global";
-import { useNavigate, useParams } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { Box, Button, Typography } from "@mui/material";
 import SideNav from "./components/sidebar";
 
 const AdminPage = () => {
@@ -34,6 +34,9 @@ const AdminPage = () => {
           maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
           aliquam ultrices sagittis orci a.
         </Typography>
+        <NavLink to="/">
+          <Button variant="contained">Go to Home Page</Button>
+        </NavLink>
       </Box>
     </Box>
   );
