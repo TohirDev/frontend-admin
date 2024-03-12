@@ -3,6 +3,7 @@ import SideNav from "../sidebar";
 import { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import Active from "./components/active";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -38,13 +39,13 @@ function Elonlar() {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="Item One" {...a11yProps(0)} />
-              <Tab label="Item Two" {...a11yProps(1)} />
-              <Tab label="Item Three" {...a11yProps(2)} />
+              <Tab key={0} label="Item One" {...a11yProps(0)} />
+              <Tab key={1} label="Item Two" {...a11yProps(1)} />
+              <Tab key={2} label="Item Three" {...a11yProps(2)} />
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
-            Item One
+            <Active />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
             Item Two

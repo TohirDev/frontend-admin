@@ -14,6 +14,7 @@ const AdminPage = () => {
       navigate("/login");
     }
   }, [navigate]);
+
   return (
     <Box sx={{ display: "flex" }}>
       <SideNav />
