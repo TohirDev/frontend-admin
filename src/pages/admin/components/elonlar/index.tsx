@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import SideNav from "../sidebar";
-import React, { useState } from "react";
+import { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Active from "./components/active";

@@ -39,7 +39,7 @@ function Navbar() {
   //state
   const [SearchIsActive, setSearchIsActive] = useState<boolean>(false);
   return (
-    <Grid container fontFamily={"Poppins"}>
+    <Grid component={"header"} container fontFamily={"Poppins"}>
       <Grid item xs={12} bgcolor={"black"} color={"white"}>
         <Container
           maxWidth="xl"
@@ -134,9 +134,10 @@ function Navbar() {
             ml={"25px"}
           >
             {!!pages &&
-              pages.map((page) =>
+              pages.map((page, i) =>
                 page.name === "Our Deals" ? (
                   <Button
+                    key={i}
                     onClick={() => navigate(page.path)}
                     variant="outlined"
                     sx={{
@@ -158,6 +159,7 @@ function Navbar() {
                   </Button>
                 ) : (
                   <Link
+                    key={i}
                     style={{
                       textDecoration: "none",
                       color: "black",

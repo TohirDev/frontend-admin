@@ -13,11 +13,14 @@ import {
 
 //links
 import { user_settings } from "../../constants";
+import { NavLink } from "react-router-dom";
 
 //component
 function UserMenu() {
   //state
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(
+    null
+  );
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -53,25 +56,26 @@ function UserMenu() {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {user_settings.map((setting) => (
-          <MenuItem key={setting.path} onClick={handleCloseUserMenu}>
-            <Typography
-              component={"a"}
-              href={setting.path}
-              textAlign="center"
-              sx={{
-                color: "#000",
+        {user_settings.map((setting, i) => (
+          <NavLink to={setting.path}>
+            <MenuItem key={i} onClick={handleCloseUserMenu}>
+              <Typography
+                component={"a"}
+                textAlign="center"
+                sx={{
+                  color: "#000",
 
-                fontSize: "14px",
-                fontWeight: 500,
-                fontFamily: "Poppins, sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  fontFamily: "Poppins, sans-serif",
 
-                textDecoration: "none",
-              }}
-            >
-              {setting.name}
-            </Typography>
-          </MenuItem>
+                  textDecoration: "none",
+                }}
+              >
+                {setting.name}
+              </Typography>
+            </MenuItem>
+          </NavLink>
         ))}
       </Menu>
     </Box>

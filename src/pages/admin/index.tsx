@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { getUserToken, removeToken } from "../../global";
-import { useNavigate, useParams } from "react-router-dom";
+import { getUserToken } from "../../global";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
 import SideNav from "./components/sidebar";
 
@@ -15,10 +15,6 @@ const AdminPage = () => {
     }
   }, [navigate]);
 
-  function logOut() {
-    removeToken();
-    navigate("/login");
-  }
   return (
     <Box sx={{ display: "flex" }}>
       <SideNav />
@@ -39,9 +35,9 @@ const AdminPage = () => {
           maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
           aliquam ultrices sagittis orci a.
         </Typography>
-        <Button variant="contained" color="error" onClick={logOut}>
-          Log Out
-        </Button>
+        <NavLink to="/">
+          <Button variant="contained">Go to Home Page</Button>
+        </NavLink>
       </Box>
     </Box>
   );

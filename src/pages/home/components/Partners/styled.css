@@ -1,0 +1,15 @@
+.inner-wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 152px;
+  justify-items: stretch;
+}
+
+@keyframes scroll {
+  to {
+    translate: calc(-4 * 152px);
+  }
+}
+.inner-wrapper {
+  animation: scroll 10s linear infinite;
+}
