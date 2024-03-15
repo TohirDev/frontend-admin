@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type TRegLoginData = {
   message: string;
   data: {
@@ -14,4 +16,10 @@ export type TRegLoginData = {
 export type Inputs = {
   phone_number: number;
   password: string;
+};
+
+export type TListItemLink = {
+  path: string;
+  text: string;
+  icon: ReactNode;
 };
