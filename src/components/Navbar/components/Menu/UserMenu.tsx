@@ -56,15 +56,14 @@ function UserMenu() {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {user_settings.map((setting, i) => (
+        {user_settings.map((setting) => (
           <NavLink to={setting.path}>
-            <MenuItem key={i} onClick={handleCloseUserMenu}>
+            <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
               <Typography
                 component={"a"}
                 textAlign="center"
                 sx={{
                   color: "#000",
-
                   fontSize: "14px",
                   fontWeight: 500,
                   fontFamily: "Poppins, sans-serif",
