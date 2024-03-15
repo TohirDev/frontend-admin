@@ -14,7 +14,7 @@ export const pages: NAV_HEADER[] = [
 ];
 
 export const user_settings: NAV_HEADER[] = [
-  { name: "My Account", path: "/admin" },
+  { name: "My Account", path: "/admin/elonlar" },
   { name: "My Wish List (0)", path: "#" },
   { name: "Compare (0)", path: "#" },
   { name: "Create an Account", path: "#" },
