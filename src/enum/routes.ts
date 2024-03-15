@@ -4,7 +4,6 @@ export enum ERoutes {
   LoginPage = "/login",
   RegistrationPage = "/register",
   NotFoundPage = "*",
-  AdminPage = "/admin",
   AdminAnnouncement = "/admin/elonlar",
   AdminSettings = "/admin/settings",
 }
