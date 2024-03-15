@@ -5,10 +5,8 @@ import MainLayout from "./pages/layout";
 import Home from "./pages/home";
 import LoginPage from "./pages/auth/login";
 import RegistrationPage from "./pages/auth/registeration";
-import AdminPage from "./pages/admin";
-import Elonlar from "./pages/admin/components/elonlar";
-import Settings from "./pages/admin/components/settings";
 import PageNotFound from "./pages/404";
+import Layout from "./pages/layout/layout";
 
 export default function Router() {
   const routes = useRoutes([
@@ -29,17 +27,14 @@ export default function Router() {
       path: ERoutes.RegistrationPage,
       element: <RegistrationPage />,
     },
-    {
-      path: ERoutes.AdminPage,
-      element: <AdminPage />,
-    },
+
     {
       path: ERoutes.AdminAnnouncement,
-      element: <Elonlar />,
+      element: <Layout />,
     },
     {
       path: ERoutes.AdminSettings,
-      element: <Settings />,
+      element: <Layout />,
     },
     {
       path: ERoutes.NotFoundPage,
