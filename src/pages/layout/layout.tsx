@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import SideNav from "../admin/components/sidebar";
 import { useLocation } from "react-router-dom";
-import Elonlar from "../admin/components/elonlar";
-import Settings from "../admin/components/settings";
+import { Elonlar } from "@/pages/admin/components/elonlar/index";
+import Settings from "@/pages/admin/components/settings";
 
 function Layout() {
   const { pathname } = useLocation();
