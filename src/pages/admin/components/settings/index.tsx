@@ -1,8 +1,17 @@
+import { BreadCrumb } from "../../../../components/BreadCrumb";
 import { Typography } from "@mui/material";
 
 function Settings() {
   return (
     <>
+      <BreadCrumb
+        key={1}
+        title="Settings"
+        subtitleOne="Toza Laptop"
+        subtitleTwo="Settings"
+        subtitleOnePath="/"
+        subtitleTwoPath="/admin/settings"
+      />
       <Typography variant="h1">Settings</Typography>
       <Typography paragraph>
         Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
