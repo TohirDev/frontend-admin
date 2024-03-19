@@ -2,13 +2,12 @@ import { styled, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import MuiDrawer from "@mui/material/Drawer";
 
 import { ERoutes } from "../../../../enum/routes";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { ListItemLink } from "./components/ListItemLink";
 
 const drawerWidth = 240;
@@ -51,12 +50,21 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+}));
+
 export default function SideNav() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <Drawer variant="permanent" open={true}>
-        <Divider />
+        <DrawerHeader>
+          <Typography variant="body1">Laptop Uzbekistan</Typography>
+        </DrawerHeader>
         <List>
           <ListItemLink
             text="Elonlar"
