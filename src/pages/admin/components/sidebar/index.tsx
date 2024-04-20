@@ -75,7 +75,7 @@ export default function SideNav() {
           <ListItemLink
             text="Settings"
             path={ERoutes.AdminSettings}
-            key={1}
+            key={2}
             icon={<SettingsIcon />}
           />
         </List>
