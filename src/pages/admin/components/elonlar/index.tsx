@@ -1,81 +1,96 @@
-import {
-  Box,
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import { BreadCrumb } from "../../../../components/BreadCrumb";
 import { useFetchData } from "@/hooks/useFetch";
 import { useEffect, useState } from "react";
 import { TDataType } from "@/types";
-import { AddElon } from "./components/AddElon";
 
 export const Elonlar = () => {
   const [getElonlar, { data, loading, error }] = useFetchData<TDataType>(
     "https://laptop-uz.onrender.com/api/product/get-all"
   );
-  const [open, setOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage, setReacordsPerPage] = useState("5");
+  const lastIndex = currentPage * Number(recordsPerPage);
+  const firstIndex = lastIndex - Number(recordsPerPage);
+  const records = data?.data.slice(firstIndex, lastIndex);
+  let npage = 0;
+  let numbers: number[] = [];
+  if (data?.count !== undefined) {
+    npage = Math.ceil(data?.count / Number(recordsPerPage));
+    numbers = [...Array(npage + 1).keys()].slice(1);
+  }
   useEffect(() => {
     getElonlar();
   }, [getElonlar]);
   if (error) return <h1>Error get the fuck out of here</h1>;
   if (loading) return <h1>Loading...</h1>;
+
+  function nextPage() {
+    if (currentPage != lastIndex) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+
+  function prePage() {
+    if (currentPage != firstIndex) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  function changeCPage(id: number) {
+    setCurrentPage(id);
+  }
   return (
-    <Box>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {records?.map((el) => (
+            <tr key={el._id}>
+              <td>{el._id}</td>
+              <td>{el.model_name}</td>
+              <td>{el.gpu}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <ul style={{ display: "flex", listStyle: "none", padding: 0 }}>
+        <li>
+          <button onClick={prePage} disabled={currentPage === 1}>
+            Previous
+          </button>
+        </li>
+        {numbers.map((el) => (
+          <li key={el}>
+            <button
+              onClick={() => changeCPage(el)}
+              style={{
+                background: el === currentPage ? "red" : "white",
+              }}
+            >
+              {el}
+            </button>
+          </li>
+        ))}
+        <li>
+          <button onClick={nextPage} disabled={currentPage === npage}>
+            Next
+          </button>
+        </li>
+      </ul>
+      <select
+        name="page"
+        onChange={(e) => setReacordsPerPage(e.target.value)}
       >
-        <BreadCrumb
-          key={1}
-          title="E'lonlar"
-          subtitleOne="Toza Laptop"
-          subtitleTwo="Laptop"
-          subtitleOnePath="/"
-          subtitleTwoPath="/admin/elonlar"
-        />
-        <Button variant="contained" onClick={() => setOpen(true)}>
-          Add Product
-        </Button>
-      </Box>
-      <AddElon width={613} onClose={() => setOpen(false)} open={open} />
-      <TableContainer component={Paper} sx={{ mt: 4 }}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data?.data.map((item) => (
-              <TableRow
-                key={item._id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {item.display}
-                </TableCell>
-                <TableCell align="right">{item.battery}</TableCell>
-                <TableCell align="right">{item.gpu}</TableCell>
-                <TableCell align="right">{item.location}</TableCell>
-                <TableCell align="right">{item.phone_number}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Box>
+        <option value={5}>5</option>
+        <option value={10}>10</option>
+        <option value={15}>15</option>
+        <option value={20}>20</option>
+      </select>
+    </div>
   );
 };
